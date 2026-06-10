@@ -120,34 +120,36 @@
 
   <!-- 首頁全螢幕封面背景 -->
   <header id="home" class="relative w-full h-screen flex items-center justify-center overflow-hidden">
-    <!-- 背景圖片與半透明遮罩 (調整 background-position 往右拉至 48%，男女雙方在手機/電腦上皆能平均呈現，比例完美) -->
+    <!-- 背景圖片與半透明遮罩 (調整背景圖片位置為 45% center) -->
     <div class="absolute inset-0 bg-cover transition-transform duration-[10000ms] scale-105" 
-         style="background-image: url('https://i.postimg.cc/JzgLPz5Q/DSC01301.jpg'); background-position: 48% center;">
+         style="background-image: url('https://i.postimg.cc/JzgLPz5Q/DSC01301.jpg'); background-position: 45% center;">
     </div>
     <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-morandi-cream/90"></div>
 
-    <!-- 首頁文字層 -->
-    <div class="relative z-10 text-center text-white px-4 flex flex-col items-center justify-between h-3/5 mt-10">
+    <!-- 首頁文字層 (重新編排，利用 flex-col 實現中、下區段文字完美下移) -->
+    <div class="relative z-10 text-center text-white px-4 flex flex-col items-center justify-between h-full pt-28 pb-12">
+      <!-- 頂部 Slogan -->
       <div class="space-y-2">
         <h2 class="text-sm md:text-base tracking-[0.4em] text-morandi-cream/90 font-light">始於心動，止於永久</h2>
         <div class="w-8 h-[1px] bg-morandi-cream/50 mx-auto my-3"></div>
         <p class="font-display text-xs md:text-sm tracking-[0.3em] uppercase text-morandi-cream/70">Wedding Invitation</p>
       </div>
 
-      <!-- 放大後的中文名字與Slogan區塊（已去除英文標題 Wei & Ting） -->
-      <div class="my-auto space-y-6">
-        <!-- 中文名字稍微放大 (原本為 text-lg md:text-2xl，現在放大為 text-3xl md:text-5xl) -->
+      <!-- 中部偏下區塊 (將名字與Slogan下移至女生臉部以下位置) -->
+      <div class="mt-auto mb-10 space-y-6">
+        <!-- 中文名字稍微放大 -->
         <p class="text-3xl md:text-5xl tracking-[0.25em] text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)] font-semibold">
           倞轊 <span class="font-display italic text-morandi-nude mx-2">&</span> 靖婷
         </p>
         
-        <!-- 暖心 Slogan 稍微放大 (原本為 text-xs md:text-sm，現在放大為 text-base md:text-lg) -->
+        <!-- 暖心 Slogan 稍微放大 -->
         <p class="text-base md:text-lg tracking-[0.4em] text-morandi-nude font-light bg-black/20 py-2 px-6 rounded-full backdrop-blur-[4px] inline-block shadow-sm">
           轊來有你 , 婷好的
         </p>
       </div>
 
-      <div class="space-y-4">
+      <!-- 底部區域 (將日期與引導箭頭下推至最貼近底層區域) -->
+      <div class="space-y-4 w-full">
         <p class="font-display text-sm md:text-base tracking-[0.25em] text-morandi-charcoal">2026.11.01 ｜ KAOHSIUNG</p>
         <!-- 向下指引微動效 -->
         <a href="#about" class="inline-block animate-bounce text-morandi-charcoal hover:text-morandi-warm transition">
@@ -248,7 +250,7 @@
         <!-- V-Card 花邊點綴 -->
         <div class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-morandi-nude via-morandi-warm to-morandi-nude"></div>
         
-        <!-- 資訊一：日期與時間 (行事曆按鈕已根據需求刪除) -->
+        <!-- 資訊一：日期與時間 -->
         <div class="flex items-start space-x-6">
           <div class="bg-morandi-cream p-3 rounded-2xl text-morandi-clay shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -489,7 +491,7 @@
 
           <!-- 【智能動態區 2】：根據喜帖選擇決定顯示的地址與信箱 -->
           
-          <!-- A. 紙本喜帖收件地址 -->
+          <!-- A. 紙本喜帖收件地址 (已微調預設提示字) -->
           <div id="div-mailing-address" class="hidden dynamic-field-transition space-y-2 border-l-2 border-morandi-nude/50 pl-4 py-1">
             <label class="block text-xs font-semibold text-morandi-clay tracking-widest">
               紙本喜帖收件地址 MAILING ADDRESS <span class="text-red-400">*</span>
@@ -498,12 +500,12 @@
               type="text" 
               id="mailing-address-input"
               name="entry.1493665177" 
-              placeholder="請填寫詳細地址及郵遞區號"
+              placeholder="請填寫完整地址"
               class="w-full px-4 py-3 rounded-xl border border-morandi-nude/50 focus:border-morandi-warm focus:ring-1 focus:ring-morandi-warm outline-none text-morandi-charcoal placeholder:text-morandi-clay/30 bg-morandi-cream/10 transition duration-300 text-sm"
             >
           </div>
 
-          <!-- B. 電子喜帖收件信箱 -->
+          <!-- B. 電子喜帖收件信箱 (已完全清除預設提示字) -->
           <div id="div-email-address" class="hidden dynamic-field-transition space-y-2 border-l-2 border-morandi-nude/50 pl-4 py-1">
             <label class="block text-xs font-semibold text-morandi-clay tracking-widest">
               電子喜帖收件信箱 EMAIL ADDRESS <span class="text-red-400">*</span>
@@ -512,8 +514,8 @@
               type="email" 
               id="email-address-input"
               name="entry.506633649" 
-              placeholder="example@gmail.com"
-              class="w-full px-4 py-3 rounded-xl border border-morandi-nude/50 focus:border-morandi-warm focus:ring-1 focus:ring-morandi-warm outline-none text-morandi-charcoal placeholder:text-morandi-clay/30 bg-morandi-cream/10 transition duration-300 text-sm"
+              placeholder=""
+              class="w-full px-4 py-3 rounded-xl border border-morandi-nude/50 focus:border-morandi-warm focus:ring-1 focus:ring-morandi-warm outline-none text-morandi-charcoal bg-morandi-cream/10 transition duration-300 text-sm"
             >
           </div>
 
@@ -530,7 +532,7 @@
             >
           </div>
 
-          <!-- 6. 给新人的祝福 (調整預設文字) -->
+          <!-- 6. 给新人的祝福 (已調整預設文字) -->
           <div class="space-y-2">
             <label class="block text-xs font-semibold text-morandi-clay tracking-widest">
               給新人的祝福 CONGRATULATIONS
