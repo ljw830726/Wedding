@@ -100,37 +100,9 @@
       background-size: 200% 100%;
       animation: shimmer 4s infinite linear;
     }
-
-    /* 背景音樂旋轉動畫 */
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .animate-spin-slow {
-      animation: rotate 6s linear infinite;
-    }
   </style>
 </head>
 <body class="selection:bg-morandi-warm selection:text-white">
-
-  <!-- 背景音樂播放器 (懸浮於右下角) -->
-  <div class="fixed bottom-6 right-6 z-50">
-    <button id="music-btn" onclick="toggleMusic()" class="w-12 h-12 rounded-full bg-white/90 backdrop-blur-md border border-morandi-nude/60 shadow-lg flex items-center justify-center text-morandi-clay hover:text-morandi-warm hover:scale-105 transition-all active:scale-95 duration-300">
-      <!-- 播放狀態圖示：預設旋轉音符 -->
-      <svg id="music-playing-icon" class="w-5 h-5 animate-spin-slow hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-      </svg>
-      <!-- 靜音狀態圖示：斜線音符 -->
-      <svg id="music-paused-icon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-      </svg>
-    </button>
-    <!-- 背景音樂來源 (使用合法的優雅、無版權鋼琴婚禮音樂) -->
-    <audio id="bg-music" loop preload="auto">
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
-    </audio>
-  </div>
 
   <!-- 頂部懸浮導覽列 -->
   <nav class="fixed top-0 left-0 w-full z-50 px-6 py-4 transition-all duration-300" id="navbar">
@@ -148,9 +120,9 @@
 
   <!-- 首頁全螢幕封面背景 -->
   <header id="home" class="relative w-full h-screen flex items-center justify-center overflow-hidden">
-    <!-- 背景圖片與半透明遮罩 -->
+    <!-- 背景圖片與半透明遮罩 (調整 background-position 往右拉至 48%，男女雙方在手機/電腦上皆能平均呈現，比例完美) -->
     <div class="absolute inset-0 bg-cover transition-transform duration-[10000ms] scale-105" 
-         style="background-image: url('https://i.postimg.cc/JzgLPz5Q/DSC01301.jpg'); background-position: 37% center;">
+         style="background-image: url('https://i.postimg.cc/JzgLPz5Q/DSC01301.jpg'); background-position: 48% center;">
     </div>
     <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-morandi-cream/90"></div>
 
@@ -545,7 +517,7 @@
             >
           </div>
 
-          <!-- C. 您的聯絡電話 (全新顯示邏輯：只要出席意願選擇「是的，我會參加！」，即在此呈現) -->
+          <!-- C. 您的聯絡電話 (全新顯示邏輯：只要出席意願選擇「是的，我會參加！」，即在此呈現，且完全無 Placeholder) -->
           <div id="div-phone-number" class="hidden dynamic-field-transition space-y-2 border-l-2 border-morandi-nude/50 pl-4 py-1">
             <label class="block text-xs font-semibold text-morandi-clay tracking-widest">
               您的聯絡電話 PHONE NUMBER
@@ -554,12 +526,11 @@
               type="tel" 
               id="phone-number-input"
               name="entry.825689177" 
-              placeholder="例：0912345678"
-              class="w-full px-4 py-3 rounded-xl border border-morandi-nude/50 focus:border-morandi-warm focus:ring-1 focus:ring-morandi-warm outline-none text-morandi-charcoal placeholder:text-morandi-clay/30 bg-morandi-cream/10 transition duration-300 text-sm"
+              class="w-full px-4 py-3 rounded-xl border border-morandi-nude/50 focus:border-morandi-warm focus:ring-1 focus:ring-morandi-warm outline-none text-morandi-charcoal bg-morandi-cream/10 transition duration-300 text-sm"
             >
           </div>
 
-          <!-- 6. 给新人的祝福 -->
+          <!-- 6. 给新人的祝福 (調整預設文字) -->
           <div class="space-y-2">
             <label class="block text-xs font-semibold text-morandi-clay tracking-widest">
               給新人的祝福 CONGRATULATIONS
@@ -594,20 +565,24 @@
             </svg>
           </div>
 
-          <!-- 感謝文案 (標題採用 no-wrap 與精準字體大小，內文完美排版對稱) -->
-          <div class="space-y-3">
+          <!-- 感謝文案 (完美排版對稱且鎖定5行不跑版，手機版縮小字形，電腦版完美呈現) -->
+          <div class="space-y-4">
             <h3 class="no-wrap text-base md:text-2xl font-bold text-morandi-clay tracking-wider">
               【 感謝您的填寫！期待當天見到您 】
             </h3>
             <div class="w-12 h-[1px] bg-morandi-warm/50 mx-auto my-3"></div>
-            <p class="text-xs md:text-base text-morandi-charcoal/80 leading-relaxed max-w-lg mx-auto text-center tracking-widest font-light">
-              為了讓大家玩得更盡興，我們當天特別安排了<span class="no-wrap font-semibold text-morandi-clay">「婚禮拍貼機」進駐！</span><br class="hidden md:inline">
-              大家拍攝的照片都會同步彙整到我們的專屬 LINE 頻道中<br class="hidden md:inline">
-              婚禮的最新消息與座位資訊也會陸續公告在裡面 <span class="no-wrap font-medium text-morandi-clay">歡迎大家提前加入！</span>
-            </p>
+            
+            <!-- 採用靈活的 RWD 行動縮放比例，徹底鎖定5行完全不自動換行斷句 -->
+            <div class="text-[11px] sm:text-sm md:text-base text-morandi-charcoal/80 leading-loose max-w-xl mx-auto text-center tracking-widest font-light flex flex-col items-center space-y-1 md:space-y-2">
+              <span class="no-wrap block">為了讓大家玩得更盡興，我們當天特別安排了</span>
+              <span class="no-wrap block font-semibold text-morandi-clay">「婚禮拍貼機」進駐！</span>
+              <span class="no-wrap block">大家拍攝的照片都會同步彙整到我們的專屬 LINE 頻道中</span>
+              <span class="no-wrap block">婚禮的最新消息與座位資訊也會陸續公告在裡面</span>
+              <span class="no-wrap block font-medium text-morandi-clay">歡迎大家提前加入！</span>
+            </div>
           </div>
 
-          <!-- LINE QR Code & 連結 (移除 Line ID 文字，僅保留官方帳號名稱) -->
+          <!-- LINE QR Code & 連結 (僅保留 @635dgffw) -->
           <div class="bg-morandi-cream/40 rounded-2xl p-6 max-w-sm mx-auto space-y-4 border border-morandi-nude/20">
             <!-- QR CODE 圖片 -->
             <div class="flex justify-center">
@@ -619,7 +594,7 @@
               >
             </div>
             
-            <!-- LINE ID 超連結 -->
+            <!-- LINE 連結 -->
             <div class="space-y-1">
               <p class="text-xs text-morandi-clay tracking-wider">點選連結或掃描加入專屬頻道</p>
               <a 
@@ -719,7 +694,7 @@
     }
 
     // 5. 智能表單邏輯
-    // A. 偵測出席意願改變
+    // A. 偵測出席意願改變 (修改聯動電話顯示邏輯：選取是的，即立即呈現，非必填)
     function handleAttendanceIntentChange() {
       const intentSelect = document.getElementById('attendance-intent');
       const val = intentSelect.value;
@@ -841,27 +816,7 @@
       }
     });
 
-    // 7. 背景音樂播放/暫停控制 (符合現代瀏覽器規範)
-    function toggleMusic() {
-      const music = document.getElementById('bg-music');
-      const playIcon = document.getElementById('music-playing-icon');
-      const pauseIcon = document.getElementById('music-paused-icon');
-
-      if (music.paused) {
-        music.play().then(() => {
-          playIcon.classList.remove('hidden');
-          pauseIcon.classList.add('hidden');
-        }).catch(err => {
-          console.log("播放被瀏覽器阻擋，需要使用者手動點擊交互才能播放。", err);
-        });
-      } else {
-        music.pause();
-        playIcon.classList.add('hidden');
-        pauseIcon.classList.remove('hidden');
-      }
-    }
-
-    // 8. 滾動淡入動畫 (Scroll Intersection Observer)
+    // 7. 滾動淡入動畫 (Scroll Intersection Observer)
     const observerOptions = {
       root: null,
       rootMargin: '0px',
