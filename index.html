@@ -30,7 +30,7 @@
           fontFamily: {
             serif: ['Noto Serif TC', 'Georgia', 'serif'],
             display: ['Cormorant Garamond', 'serif'],
-            mono: ['Playfair Display', 'serif'], 
+            num: ['Playfair Display', 'serif'], 
           }
         }
       }
@@ -151,7 +151,7 @@
 
       <!-- 底部區域 (將日期與引導箭頭下推至最貼近底層區域) -->
       <div class="space-y-4 w-full">
-        <p class="font-mono text-xs md:text-sm tracking-[0.3em] text-morandi-charcoal font-light">
+        <p class="!font-num text-xs md:text-sm tracking-[0.3em] text-morandi-charcoal font-light">
           2026.11.01 <span class="text-morandi-warm mx-2">|</span> KAOHSIUNG
         </p>
         <!-- 向下指引微動效 -->
@@ -212,7 +212,7 @@
         <!-- 天數卡片 -->
         <div class="shimmer-card rounded-2xl p-3 md:p-6 flex flex-col justify-center items-center relative overflow-hidden">
           <div class="shimmer-bg absolute inset-0 opacity-20 pointer-events-none"></div>
-          <span id="days" class="font-mono text-3xl md:text-5xl font-light text-morandi-charcoal">00</span>
+          <span id="days" class="!font-num text-3xl md:text-5xl font-light text-morandi-charcoal">00</span>
           <!-- 垂直細線與中文單位 -->
           <div class="w-full h-[1px] bg-morandi-warm/30 my-2 md:my-3"></div>
           <span class="text-xs md:text-sm text-morandi-clay font-medium tracking-widest">天</span>
@@ -221,7 +221,7 @@
         <!-- 時數卡片 -->
         <div class="shimmer-card rounded-2xl p-3 md:p-6 flex flex-col justify-center items-center relative overflow-hidden">
           <div class="shimmer-bg absolute inset-0 opacity-20 pointer-events-none"></div>
-          <span id="hours" class="font-mono text-3xl md:text-5xl font-light text-morandi-charcoal">00</span>
+          <span id="hours" class="!font-num text-3xl md:text-5xl font-light text-morandi-charcoal">00</span>
           <div class="w-full h-[1px] bg-morandi-warm/30 my-2 md:my-3"></div>
           <span class="text-xs md:text-sm text-morandi-clay font-medium tracking-widest">時</span>
         </div>
@@ -229,7 +229,7 @@
         <!-- 分數卡片 -->
         <div class="shimmer-card rounded-2xl p-3 md:p-6 flex flex-col justify-center items-center relative overflow-hidden">
           <div class="shimmer-bg absolute inset-0 opacity-20 pointer-events-none"></div>
-          <span id="minutes" class="font-mono text-3xl md:text-5xl font-light text-morandi-charcoal">00</span>
+          <span id="minutes" class="!font-num text-3xl md:text-5xl font-light text-morandi-charcoal">00</span>
           <div class="w-full h-[1px] bg-morandi-warm/30 my-2 md:my-3"></div>
           <span class="text-xs md:text-sm text-morandi-clay font-medium tracking-widest">分</span>
         </div>
@@ -237,7 +237,7 @@
         <!-- 秒數卡片 -->
         <div class="shimmer-card rounded-2xl p-3 md:p-6 flex flex-col justify-center items-center relative overflow-hidden">
           <div class="shimmer-bg absolute inset-0 opacity-20 pointer-events-none"></div>
-          <span id="seconds" class="font-mono text-3xl md:text-5xl font-light text-morandi-warm">00</span>
+          <span id="seconds" class="!font-num text-3xl md:text-5xl font-light text-morandi-warm">00</span>
           <div class="w-full h-[1px] bg-morandi-warm/30 my-2 md:my-3"></div>
           <span class="text-xs md:text-sm text-morandi-clay font-medium tracking-widest">秒</span>
         </div>
