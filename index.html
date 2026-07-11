@@ -150,7 +150,9 @@
 
       <!-- 底部區域 (將日期與引導箭頭下推至最貼近底層區域) -->
       <div class="space-y-4 w-full">
-        <p class="font-medium text-sm md:text-base tracking-[0.25em] text-morandi-charcoal">2026.11.01 ｜ KAOHSIUNG</p>
+        <p class="font-sans text-xs md:text-sm tracking-[0.3em] text-morandi-charcoal font-light">
+          2026.11.01 <span class="text-morandi-warm mx-2">|</span> KAOHSIUNG
+        </p>
         <!-- 向下指引微動效 -->
         <a href="#about" class="inline-block animate-bounce text-morandi-charcoal hover:text-morandi-warm transition">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" class="w-8 h-8">
@@ -209,7 +211,7 @@
         <!-- 天數卡片 -->
         <div class="shimmer-card rounded-2xl p-3 md:p-6 flex flex-col justify-center items-center relative overflow-hidden">
           <div class="shimmer-bg absolute inset-0 opacity-20 pointer-events-none"></div>
-          <span id="days" class="font-medium text-3xl md:text-5xl font-light text-morandi-charcoal">00</span>
+          <span id="days" class="font-display text-3xl md:text-5xl font-light text-morandi-charcoal">00</span>
           <!-- 垂直細線與中文單位 -->
           <div class="w-full h-[1px] bg-morandi-warm/30 my-2 md:my-3"></div>
           <span class="text-xs md:text-sm text-morandi-clay font-medium tracking-widest">天</span>
@@ -218,7 +220,7 @@
         <!-- 時數卡片 -->
         <div class="shimmer-card rounded-2xl p-3 md:p-6 flex flex-col justify-center items-center relative overflow-hidden">
           <div class="shimmer-bg absolute inset-0 opacity-20 pointer-events-none"></div>
-          <span id="hours" class="font-medium text-3xl md:text-5xl font-light text-morandi-charcoal">00</span>
+          <span id="hours" class="font-display text-3xl md:text-5xl font-light text-morandi-charcoal">00</span>
           <div class="w-full h-[1px] bg-morandi-warm/30 my-2 md:my-3"></div>
           <span class="text-xs md:text-sm text-morandi-clay font-medium tracking-widest">時</span>
         </div>
@@ -226,7 +228,7 @@
         <!-- 分數卡片 -->
         <div class="shimmer-card rounded-2xl p-3 md:p-6 flex flex-col justify-center items-center relative overflow-hidden">
           <div class="shimmer-bg absolute inset-0 opacity-20 pointer-events-none"></div>
-          <span id="minutes" class="font-medium text-3xl md:text-5xl font-light text-morandi-charcoal">00</span>
+          <span id="minutes" class="font-display text-3xl md:text-5xl font-light text-morandi-charcoal">00</span>
           <div class="w-full h-[1px] bg-morandi-warm/30 my-2 md:my-3"></div>
           <span class="text-xs md:text-sm text-morandi-clay font-medium tracking-widest">分</span>
         </div>
@@ -234,7 +236,7 @@
         <!-- 秒數卡片 -->
         <div class="shimmer-card rounded-2xl p-3 md:p-6 flex flex-col justify-center items-center relative overflow-hidden">
           <div class="shimmer-bg absolute inset-0 opacity-20 pointer-events-none"></div>
-          <span id="seconds" class="font-medium text-3xl md:text-5xl font-light text-morandi-warm">00</span>
+          <span id="seconds" class="font-display text-3xl md:text-5xl font-light text-morandi-warm">00</span>
           <div class="w-full h-[1px] bg-morandi-warm/30 my-2 md:my-3"></div>
           <span class="text-xs md:text-sm text-morandi-clay font-medium tracking-widest">秒</span>
         </div>
@@ -439,28 +441,9 @@
                 class="w-full px-4 py-3 rounded-xl border border-morandi-nude/50 focus:border-morandi-warm focus:ring-1 focus:ring-morandi-warm outline-none text-morandi-charcoal placeholder:text-morandi-clay/30 bg-morandi-cream/10 transition duration-300 text-sm"
               >
             </div>
-            
-          <!-- 【智能動態區 1】：當出席意願為「是的，我會參加！」時，才顯示『出席人數』以及底下子欄位 -->
-          <div id="div-guest-count-wrapper" class="hidden dynamic-field-transition space-y-6 border-l-2 border-morandi-nude/50 pl-4 py-1">
-            <!-- 4. 出席人數 (優化為 type="text" 並限制僅輸入數字，確保 Google 表單穩定接收) -->
-            <div class="space-y-2">
-              <label class="block text-xs font-semibold text-morandi-clay tracking-widest">
-                出席人數 GUEST COUNT <span class="text-red-400">*</span>
-              </label>
-              <input 
-                type="text" 
-                inputmode="numeric"
-                pattern="[0-9]*"
-                id="guest-count"
-                name="entry.194738032" 
-                placeholder="請填寫總出席人數"
-                oninput="handleGuestCountChange()"
-                class="w-full px-4 py-3 rounded-xl border border-morandi-nude/50 focus:border-morandi-warm focus:ring-1 focus:ring-morandi-warm outline-none text-morandi-charcoal placeholder:text-morandi-clay/30 bg-morandi-cream/10 transition duration-300 text-sm"
-              >
-            </div>
 
             <!-- 【智能動態子區】：當出席人數大於 0 時，才顯示『兒童座椅數量』與『飲食需求』 -->
-            <div id="dynamic-attendance-group" class="hidden dynamic-field-transition space-y-6 border-l-2 border-morandi-nude/30 pl-4 py-1" style="opacity: 0; transform: translateY(-10px);">
+            <div id="dynamic-attendance-group" class="hidden dynamic-field-transition space-y-6 border-l-2 border-morandi-nude/30 pl-4 py-1">
               
               <!-- 兒童座椅需求 -->
               <div class="space-y-2">
@@ -468,11 +451,10 @@
                   需要幾張兒童座椅 BABY CHAIRS
                 </label>
                 <input 
-                  type="text" 
-                  inputmode="numeric"
-                  pattern="[0-9]*"
+                  type="number" 
                   id="baby-chairs"
                   name="entry.1838442660" 
+                  min="0"
                   placeholder="若不需要請填 0 或留空"
                   class="w-full px-4 py-3 rounded-xl border border-morandi-nude/50 focus:border-morandi-warm focus:ring-1 focus:ring-morandi-warm outline-none text-morandi-charcoal placeholder:text-morandi-clay/30 bg-morandi-cream/10 transition duration-300 text-sm"
                 >
@@ -494,7 +476,7 @@
 
             </div>
           </div>
-            
+
           <!-- 5. 是否需要喜帖 -->
           <div class="space-y-2">
             <label class="block text-xs font-semibold text-morandi-clay tracking-widest">
